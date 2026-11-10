@@ -13,11 +13,13 @@ jobs:
           java-version: '17'
           cache: maven
       - name: Compile and package
+        working-directory: LAB1_TuLam
         run: mvn -B -DskipTests package
       - name: Capture Swing screens for the report
+        working-directory: LAB1_TuLam
         run: xvfb-run -a mvn -B -DskipTests test-compile exec:java -Dexec.classpathScope=test -Dexec.mainClass=week_01.CaptureScreens
       - uses: actions/upload-artifact@v4
         with:
           name: lab1-ui-evidence
-          path: report/evidence/*.png
+          path: LAB1_TuLam/report/evidence/*.png
           if-no-files-found: error

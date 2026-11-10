@@ -1,10 +1,5 @@
-target/
-*.log
-*.class
-.idea/
-.vscode/
-*.user
-
-*.db
-report/*.pdf
-report/qa_pages/
+**/target/
+**/*.class
+**/*.db
+**/report/*.pdf
+**/report/qa_pages/
