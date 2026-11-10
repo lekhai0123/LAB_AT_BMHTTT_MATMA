@@ -14,3 +14,10 @@ jobs:
           cache: maven
       - name: Compile and package
         run: mvn -B -DskipTests package
+      - name: Capture Swing screens for the report
+        run: xvfb-run -a mvn -B -DskipTests test-compile exec:java -Dexec.classpathScope=test -Dexec.mainClass=week_01.CaptureScreens
+      - uses: actions/upload-artifact@v4
+        with:
+          name: lab1-ui-evidence
+          path: report/evidence/*.png
+          if-no-files-found: error
